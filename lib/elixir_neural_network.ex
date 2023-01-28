@@ -1,6 +1,6 @@
 defmodule ElixirNeuralNetwork do
   @moduledoc """
-  Documentation for `ElixirNeuralNetwork`.
+  Hauptmodul des Neuralen Netzwerks.
   """
 
   @doc """

@@ -1,6 +1,6 @@
-# ElixirNeuralNetwork
+# Elixir Neurales Netzwerk
 
-**TODO: Add description**
+Einfaches neurales Netzwerk zum erkennen von handschriftlich geschriebenen Zahlen. Basierend auf [Michael Nielsen's "Neural Networks and Deep Learning"](http://neuralnetworksanddeeplearning.com/chap1.html) und dem ["Fashion MNIST" Datensatz von Zalando](https://github.com/zalandoresearch/fashion-mnist) und
 
 ## Installation
 
@@ -18,4 +18,3 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/elixir_neural_network>.
-
