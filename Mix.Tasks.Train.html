@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.29.1">
     <meta name="project" content="Elixir Neurales Netzwerk v0.1.0">
 
-    <title>ElixirNeuralNetwork.Algebra — Elixir Neurales Netzwerk v0.1.0</title>
+    <title>mix train — Elixir Neurales Netzwerk v0.1.0</title>
     <link rel="stylesheet" href="dist/html-elixir-V2ETBPMB.css" />
 
 
@@ -21,7 +21,7 @@
 
 
   </head>
-  <body data-type="modules" class="page-module">
+  <body data-type="tasks" class="page-task">
     <script>
 
       try {
@@ -98,16 +98,11 @@ Elixir Neurales Netzwerk
 </button>
 
 
-  <span translate="no">ElixirNeuralNetwork.Algebra</span> 
+  <span translate="no">mix train</span> 
   <small class="app-vsn" translate="no">(Elixir Neurales Netzwerk v0.1.0)</small>
 
 </h1>
 
-
-  <section id="moduledoc">
-<p>Modul für wiederverwendete algebraische Funktionen.
-Diese enthalten u. a. die Aktivierungsfunktion.</p>
-  </section>
 
 
   <section id="summary" class="details-list">
@@ -125,21 +120,11 @@ Diese enthalten u. a. die Aktivierungsfunktion.</p>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#logistic/1" translate="no">logistic(x)</a>
+        <a href="#run/1" translate="no">run(_)</a>
 
       </div>
 
-        <div class="summary-synopsis"><p>Logistische Funktion $\sigma(x)$, eine Funktion mit einem S-förmigen Graphen.</p></div>
-
-    </div>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#randn/2" translate="no">randn(y, x)</a>
-
-      </div>
-
-        <div class="summary-synopsis"><p>Implementation der numpy-Funktion <code class="inline">randn()</code> für 2 Dimensionen.</p></div>
+        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/mix/Mix.Task.html#c:run/1"><code class="inline">Mix.Task.run/1</code></a>.</p></div>
 
     </div>
 
@@ -157,54 +142,21 @@ Diese enthalten u. a. die Aktivierungsfunktion.</p>
 Functions
     </h1>
     <div class="functions-list">
-<section class="detail" id="logistic/1">
+<section class="detail" id="run/1">
 
   <div class="detail-header">
-    <a href="#logistic/1" class="detail-link" title="Link to this function">
+    <a href="#run/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">logistic(x)</h1>
+    <h1 class="signature" translate="no">run(_)</h1>
 
 
   </div>
 
   <section class="docstring">
 
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@spec</span> logistic(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()</pre>
-
-      </div>
-
-<p>Logistische Funktion $\sigma(x)$, eine Funktion mit einem S-förmigen Graphen.</p><p>Im wesentlichen nur eine skalierte &amp; verschobene hyperbolische Tangensfunktion.
-<a href="https://de.wikipedia.org/wiki/Logistische_Funktion">https://de.wikipedia.org/wiki/Logistische_Funktion</a></p><p>Wird für dieses Netz als Aktivierungsfunktion verwendet.</p>
-  </section>
-</section>
-<section class="detail" id="randn/2">
-
-  <div class="detail-header">
-    <a href="#randn/2" class="detail-link" title="Link to this function">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature" translate="no">randn(y, x)</h1>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@spec</span> randn(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: [[<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()]]</pre>
-
-      </div>
-
-<p>Implementation der numpy-Funktion <code class="inline">randn()</code> für 2 Dimensionen.</p><p>Generieret zufällige Werte einer Normalverteilung mit einer
-Standardabweichung / Varianz $\sigma = 1$ und einem Erwartungswert $\mu = 0$.
-Erstellt eine 2-Dimensionale Matrix, bei der jede Reihe durch eine Liste dargestellt wird.
-<a href="https://de.wikipedia.org/wiki/Normalverteilung">https://de.wikipedia.org/wiki/Normalverteilung</a></p>
+<p>Callback implementation for <a href="https://hexdocs.pm/mix/Mix.Task.html#c:run/1"><code class="inline">Mix.Task.run/1</code></a>.</p>
   </section>
 </section>
 

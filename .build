@@ -2,6 +2,7 @@
 ElixirNeuralNetwork.Algebra.html
 ElixirNeuralNetwork.Network.html
 ElixirNeuralNetwork.html
+Mix.Tasks.Train.html
 api-reference.html
 dist/handlebars.runtime-NWIB6V2M.js
 dist/handlebars.templates-IV5W3OL2.js
@@ -28,8 +29,8 @@ dist/merriweather-latin-ext-300-normal-K6L27CZ5.woff2
 dist/merriweather-vietnamese-300-italic-EHHNZPUO.woff2
 dist/merriweather-vietnamese-300-normal-U376L4Z4.woff2
 dist/remixicon-NKANDIL5.woff2
-dist/search_items-B1C46376.js
-dist/sidebar_items-360E25BC.js
+dist/search_items-F7344221.js
+dist/sidebar_items-83503307.js
 index.html
 readme.html
 search.html
