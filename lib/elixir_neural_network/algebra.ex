@@ -18,16 +18,6 @@ defmodule ElixirNeuralNetwork.Algebra do
   end
 
   @doc ~S"""
-  Benutzen der Reziprokenregel zum Ableiten von $\sigma(x)$.
-
-  https://de.wikipedia.org/wiki/Reziprokenregel
-  """
-  @spec logistic_prime(number) :: float
-  def logistic_prime(x) do
-    logistic(x) * (1 - logistic(x))
-  end
-
-  @doc ~S"""
   Implementation der numpy-Funktion `randn()` für 2 Dimensionen.
 
   Generieret zufällige Werte einer Normalverteilung mit einer
