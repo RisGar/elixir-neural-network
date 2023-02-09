@@ -13,7 +13,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-IV5W3OL2.js"></script>
-    <script src="dist/sidebar_items-27AE569F.js"></script>
+    <script src="dist/sidebar_items-360E25BC.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -122,7 +122,52 @@ Elixir Neurales Netzwerk
 
     <div class="summary-row">
       <div class="summary-signature">
+        <a href="#download/0" translate="no">download()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Importiert den MNIST-Datensatz</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
         <a href="#init/1" translate="no">init(sizes)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#prepare_data/0" translate="no">prepare_data()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Bereitet den Datensatz zur Verarbeitung im neuralen Netz vor.
+Teilt die Daten in Trainings- Validations- und Testdaten ein.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#sgd/0" translate="no">sgd()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#transform_images/1" translate="no">transform_images(arg)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#transform_labels/1" translate="no">transform_labels(arg)</a>
 
       </div>
 
@@ -142,6 +187,24 @@ Elixir Neurales Netzwerk
 Functions
     </h1>
     <div class="functions-list">
+<section class="detail" id="download/0">
+
+  <div class="detail-header">
+    <a href="#download/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">download()</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Importiert den MNIST-Datensatz</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">download</span><span class="p" data-group-id="8299980472-1">(</span><span class="p" data-group-id="8299980472-1">)</span><span class="w">
+</span><span class="p" data-group-id="8299980472-2">{</span><span class="n">images</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p" data-group-id="8299980472-2">}</span></code></pre>
+  </section>
+</section>
 <section class="detail" id="init/1">
 
   <div class="detail-header">
@@ -158,7 +221,7 @@ Functions
 
       <div class="specs">
 
-          <pre translate="no"><span class="attribute">@spec</span> init([<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()]) :: %ElixirNeuralNetwork.Network{
+          <pre translate="no"><span class="attribute">@spec</span> init(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()) :: %ElixirNeuralNetwork.Network{
   bias: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(),
   num_layers: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
   sizes: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(),
@@ -166,6 +229,76 @@ Functions
 }</pre>
 
       </div>
+
+
+  </section>
+</section>
+<section class="detail" id="prepare_data/0">
+
+  <div class="detail-header">
+    <a href="#prepare_data/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">prepare_data()</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Bereitet den Datensatz zur Verarbeitung im neuralen Netz vor.
+Teilt die Daten in Trainings- Validations- und Testdaten ein.</p><pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">transform_images</span><span class="p" data-group-id="3236239065-1">(</span><span class="p" data-group-id="3236239065-2">{</span><span class="n">images</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p" data-group-id="3236239065-2">}</span><span class="p" data-group-id="3236239065-1">)</span><span class="w">
+</span><span class="p" data-group-id="3236239065-3">{</span><span class="n">training_data</span><span class="p">,</span><span class="w"> </span><span class="n">validation_data</span><span class="p">,</span><span class="w"> </span><span class="n">test_data</span><span class="p" data-group-id="3236239065-3">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="sgd/0">
+
+  <div class="detail-header">
+    <a href="#sgd/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">sgd()</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="transform_images/1">
+
+  <div class="detail-header">
+    <a href="#transform_images/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">transform_images(arg)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="transform_labels/1">
+
+  <div class="detail-header">
+    <a href="#transform_labels/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">transform_labels(arg)</h1>
+
+
+  </div>
+
+  <section class="docstring">
 
 
   </section>
