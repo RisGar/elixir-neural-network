@@ -24,3 +24,6 @@ elixir_neural_network-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Mac DS_Store
+.DS_Store

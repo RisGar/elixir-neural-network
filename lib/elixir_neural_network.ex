@@ -2,17 +2,9 @@ defmodule ElixirNeuralNetwork do
   @moduledoc """
   Hauptmodul des Neuralen Netzwerks.
   """
+  alias ElixirNeuralNetwork.Network
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> ElixirNeuralNetwork.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def main do
+    Network.init([784, 30, 10])
   end
 end
