@@ -6,9 +6,23 @@ defmodule Mix.Tasks.Train do
   alias ElixirNeuralNetwork.Network
 
   def run(_) do
-    {training_data, validation_data, test_data} = Network.prepare_data(32)
+    {images, labels} = Network.download()
 
-    model = Network.new()
-    Network.train(model, training_data, validation_data)
+    {train_images, test_images} = Network.transform_images(images)
+    {train_labels, test_labels} = Network.transform_labels(labels)
+
+    model = Network.build({nil, 784}) |> IO.inspect()
+
+    Network.display(model)
+
+    model_state =
+      model
+      |> Network.train(train_images, train_labels, 5)
+
+    model
+    |> Network.test(model_state, test_images, test_labels)
+
+    model
+    |> Network.save!(model_state, "models/model.axon")
   end
 end

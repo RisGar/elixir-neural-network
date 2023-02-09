@@ -1,12 +1,12 @@
 defmodule ElixirNeuralNetwork do
   @moduledoc """
   Hauptmodul des Neuralen Netzwerks.
+
+  Elixir ist eine funktionelle Sprache,
+  und so habe ich mich entschieden in diesem Projekt eine funktionelle Herangehensweise zu benutzen.
+  Wie im `train.ex`-Modul einsehbar, sind alle Werte unveränderbar und werden einzeln in jede Funktion eingespeist.
   """
-  alias ElixirNeuralNetwork.Network
 
   def main do
-    {training_data, _validation_data, _test_data} = Network.prepare_data(10)
-    network = Network.init([784, 30, 10])
-    Network.gradient_descent(network, training_data, 10, 3.0)
   end
 end
