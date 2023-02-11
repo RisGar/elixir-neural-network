@@ -84,8 +84,7 @@ defmodule ElixirNeuralNetwork do
   """
   def build(input_shape) do
     Axon.input("input", shape: input_shape)
-    |> Axon.dense(128, name: "hidden", activation: :sigmoid)
-    |> Axon.dropout(name: "dropout", rate: 0.5)
+    |> Axon.dense(128, name: "hidden_1", activation: :relu)
     |> Axon.dense(10, name: "output", activation: :sigmoid)
   end
 
@@ -96,48 +95,42 @@ defmodule ElixirNeuralNetwork do
   """
   def train(model, train_images, train_labels, epochs) do
     model
-    |> Axon.Loop.trainer(:categorical_cross_entropy, Axon.Optimizers.sgd(0.05))
+    |> Axon.Loop.trainer(:categorical_cross_entropy, :adamw)
     |> Axon.Loop.metric(:accuracy, "Accuracy")
-    |> Axon.Loop.run(Stream.zip(train_images, train_labels), %{}, epochs: epochs)
+    |> Axon.Loop.run(Stream.zip(train_images, train_labels), %{}, epochs: epochs, compiler: EXLA)
   end
 
   def test(model, model_state, test_images, test_labels) do
     model
     |> Axon.Loop.evaluator()
     |> Axon.Loop.metric(:accuracy, "Accuracy")
-    |> Axon.Loop.run(Stream.zip(test_images, test_labels), model_state)
+    |> Axon.Loop.run(Stream.zip(test_images, test_labels), model_state, compiler: EXLA)
   end
 
   @doc """
   Führt dem Netzwerk ein Bild ein, um die Ziffer zu erhalelten, welche das Netzwerk als höchste Warscheinlichkeit sieht.
   """
   def predict({model, state}, data) do
-    predict_fn =
-      model
-      |> Axon.build([])
-      |> elem(1)
-
-    predict_fn.(state, data)
-
-    # |> Axon.predict(state, data)
-    #  |> Nx.argmax()
-    # |> Nx.to_number()
+    model
+    |> Axon.predict(state, data)
+    |> Nx.argmax(axis: 1)
+    |> IO.inspect()
   end
 
   @doc """
   Speichert das Netzwerk und dessen Zusaznd in der angegebenen Datei.
   """
-  def save!(data, path) do
-    path
-    |> File.write!(:erlang.term_to_binary(data))
+  def save_state!(state, path) do
+    File.rm(path)
+    File.write!(path, Nx.serialize(state))
   end
 
   @doc """
   Lädt das Netzwerk und dessen Zustand aus der angegebenen Datei.
   """
-  def load!(path) do
+  def load_state!(path) do
     path
     |> File.read!()
-    |> :erlang.binary_to_term()
+    |> Nx.deserialize()
   end
 end

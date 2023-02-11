@@ -7,21 +7,22 @@ defmodule Mix.Tasks.Predict do
 
   @impl Mix.Task
   def run(_) do
-    {data, _} = download()
+    {images, _} = download()
 
-    {images, _} = transform_images(data, 1)
+    prediction_images = prediction_images(images)
 
-    {model, state} = load!("model.axon")
+    model = build({nil, 784})
+    state = load_state!("cache/state.axon")
 
     display_network(model)
 
-    samples =
-      images
+    sample =
+      prediction_images
       |> Enum.at(0)
 
-    display_image(samples |> Nx.slice_along_axis(0, 1))
+    display_image(sample)
 
-    predict({model, state}, samples)
+    predict({model, state}, sample)
 
     :ok
   end

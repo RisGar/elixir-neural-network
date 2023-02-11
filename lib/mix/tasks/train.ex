@@ -18,7 +18,7 @@ defmodule Mix.Tasks.Train do
   """
   @impl Mix.Task
   def run(_) do
-    epochs = 5
+    epochs = 10
     split = 0.8
 
     {images, labels} = download()
@@ -29,21 +29,19 @@ defmodule Mix.Tasks.Train do
     {train_images, test_images}
     |> display_data()
 
-    # 28x28 = 784 input neurons
     model = build({nil, 784})
 
     model
     |> display_network()
 
-    model_state =
+    state =
       model
       |> train(train_images, train_labels, epochs)
 
     model
-    |> test(model_state, test_images, test_labels)
+    |> test(state, test_images, test_labels)
 
-    {model, model_state}
-    |> save!("model.axon")
+    save_state!(state, "cache/state.axon")
 
     :ok
   end
