@@ -24,10 +24,11 @@ defmodule ElixirNeuralNetwork.MixProject do
   defp deps do
     [
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:axon, "~> 0.2.0"},
-      {:exla, "~> 0.3.0"},
-      {:nx, "~> 0.3.0"},
-      {:scidata, "~> 0.1.9"}
+      {:axon, "~> 0.3.0"},
+      {:exla, "~> 0.4.0"},
+      {:nx, "~> 0.4.0", override: true},
+      {:scidata, "~> 0.1.9"},
+      {:table_rex, "~> 3.1.1"}
     ]
   end
 

@@ -31,7 +31,7 @@ defmodule Mix.Tasks.Train do
     |> display_data()
 
     # 28x28 = 784 input neurons
-    model = build({nil, 784}) |> IO.inspect()
+    model = build({nil, 784})
 
     model
     |> display_network()

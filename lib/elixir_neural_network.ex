@@ -56,12 +56,18 @@ defmodule ElixirNeuralNetwork do
     IO.puts("Testing Images: #{testing_data |> Enum.count()}")
   end
 
+  @doc """
+  Stellt das Netzwerk als Tebelle dar.
+  """
   def display_network(model) do
     model
     |> Axon.Display.as_table(Nx.template({1, 784}, :f32))
     |> IO.puts()
   end
 
+  @doc """
+  Stellt das Bild als "Heatmap" dar. Hierdurch kann das Bild im Terminal dargestellt werden.
+  """
   def display_image(image) do
     image
     |> Nx.reshape({28, 28})
@@ -77,9 +83,11 @@ defmodule ElixirNeuralNetwork do
   """
   def build(input_shape) do
     Axon.input("input", shape: input_shape)
-    |> Axon.dense(128, activation: :sigmoid)
+    |> Axon.dense(128)
+    |> Axon.sigmoid()
     |> Axon.dropout()
-    |> Axon.dense(10, activation: :sigmoid)
+    |> Axon.dense(10)
+    |> Axon.sigmoid()
   end
 
   @doc """
@@ -89,7 +97,7 @@ defmodule ElixirNeuralNetwork do
   """
   def train(model, train_images, train_labels, epochs) do
     model
-    |> Axon.Loop.trainer(:categorical_cross_entropy, Axon.Optimizers.sgd(0.01))
+    |> Axon.Loop.trainer(:mean_absolute_error, :sgd)
     |> Axon.Loop.metric(:accuracy, "Accuracy")
     |> Axon.Loop.run(Stream.zip(train_images, train_labels), %{}, epochs: epochs)
   end
@@ -102,13 +110,14 @@ defmodule ElixirNeuralNetwork do
   end
 
   @doc """
-  Stellt das Netzwerk als Tebelle dar.
+  Führt dem Netzwerk ein Bild ein, um die Ziffer zu erhalelten, welche das Netzwerk als höchste Warscheinlichkeit sieht.
   """
-
   def predict({model, state}, data) do
     model
     |> Axon.predict(state, data)
-    |> Nx.argmax()
+
+    #  |> Nx.argmax()
+    # |> Nx.to_number()
   end
 
   @doc """
@@ -120,7 +129,7 @@ defmodule ElixirNeuralNetwork do
   end
 
   @doc """
-  Lädt das Netzwerk und dessen Zusaznd aus der angegebenen Datei.
+  Lädt das Netzwerk und dessen Zustand aus der angegebenen Datei.
   """
   def load!(path) do
     path
