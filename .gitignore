@@ -27,3 +27,6 @@ elixir_neural_network-*.tar
 
 # Mac DS_Store
 .DS_Store
+
+# model state
+model.axon

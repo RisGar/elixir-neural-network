@@ -1,28 +1,51 @@
 defmodule Mix.Tasks.Train do
+  @moduledoc """
+  Trainiert das neurale Netz mit dem MNIST-Datensatz.
+  """
+
   use Mix.Task
 
-  @requirements ["app.start"]
+  @requirements ["app.start", "app.config"]
 
-  alias ElixirNeuralNetwork.Network
+  import ElixirNeuralNetwork
 
+  @doc """
+  Formatiert den MNIST-Datensatz und traniert das neurale Netz.
+
+  Separiert den Datensatz in Trainings- und Testdaten.
+  Diese werden dann in die Trainings- und Testfunktion des neuralen Netzes eingespeist.
+  Im Anschluss wird das Modell und der Tranierte Zusatnd in der Datei "model.axon" gespeichert.
+  """
+  @impl Mix.Task
   def run(_) do
-    {images, labels} = Network.download()
+    # constants
+    epochs = 5
+    split = 0.8
 
-    {train_images, test_images} = Network.transform_images(images)
-    {train_labels, test_labels} = Network.transform_labels(labels)
+    {images, labels} = download()
 
-    model = Network.build({nil, 784}) |> IO.inspect()
+    {train_images, test_images} = transform_images(images, split)
+    {train_labels, test_labels} = transform_labels(labels, split)
 
-    Network.display(model)
+    {train_images, test_images}
+    |> display_data()
+
+    # 28x28 = 784 input neurons
+    model = build({nil, 784}) |> IO.inspect()
+
+    model
+    |> display_network()
 
     model_state =
       model
-      |> Network.train(train_images, train_labels, 5)
+      |> train(train_images, train_labels, epochs)
 
     model
-    |> Network.test(model_state, test_images, test_labels)
+    |> test(model_state, test_images, test_labels)
 
-    model
-    |> Network.save!(model_state, "models/model.axon")
+    {model, model_state}
+    |> save!("model.axon")
+
+    :ok
   end
 end
