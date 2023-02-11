@@ -47,6 +47,7 @@ defmodule ElixirNeuralNetwork do
     # vectorise result (convert from [0, 1, 2, 3, ...] to [[1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0], ...])
     |> Nx.new_axis(-1)
     |> Nx.equal(Nx.tensor(Enum.to_list(0..9)))
+    # batch result
     |> Nx.to_batched(32)
     |> training_split(split)
   end
@@ -83,11 +84,9 @@ defmodule ElixirNeuralNetwork do
   """
   def build(input_shape) do
     Axon.input("input", shape: input_shape)
-    |> Axon.dense(128)
-    |> Axon.sigmoid()
-    |> Axon.dropout()
-    |> Axon.dense(10)
-    |> Axon.sigmoid()
+    |> Axon.dense(128, name: "hidden", activation: :sigmoid)
+    |> Axon.dropout(name: "dropout", rate: 0.5)
+    |> Axon.dense(10, name: "output", activation: :sigmoid)
   end
 
   @doc """
@@ -113,9 +112,14 @@ defmodule ElixirNeuralNetwork do
   Führt dem Netzwerk ein Bild ein, um die Ziffer zu erhalelten, welche das Netzwerk als höchste Warscheinlichkeit sieht.
   """
   def predict({model, state}, data) do
-    model
-    |> Axon.predict(state, data)
+    predict_fn =
+      model
+      |> Axon.build([])
+      |> elem(1)
 
+    predict_fn.(state, data)
+
+    # |> Axon.predict(state, data)
     #  |> Nx.argmax()
     # |> Nx.to_number()
   end

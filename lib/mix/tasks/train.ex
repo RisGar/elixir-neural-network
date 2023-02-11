@@ -18,7 +18,6 @@ defmodule Mix.Tasks.Train do
   """
   @impl Mix.Task
   def run(_) do
-    # constants
     epochs = 5
     split = 0.8
 

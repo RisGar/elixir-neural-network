@@ -11,18 +11,17 @@ defmodule Mix.Tasks.Predict do
 
     {images, _} = transform_images(data, 1)
 
-    # image = images > Nx.slice_along_axis(0, 1)
-
-    {model, model_state} = load!("model.axon")
+    {model, state} = load!("model.axon")
 
     display_network(model)
-    # display_image(image)
 
     samples =
       images
       |> Enum.at(0)
 
-    predict({model, model_state}, samples)
+    display_image(samples |> Nx.slice_along_axis(0, 1))
+
+    predict({model, state}, samples)
 
     :ok
   end
