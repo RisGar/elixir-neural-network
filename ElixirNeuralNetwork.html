@@ -13,7 +13,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-IV5W3OL2.js"></script>
-    <script src="dist/sidebar_items-4D2164D4.js"></script>
+    <script src="dist/sidebar_items-9C132F10.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -105,9 +105,7 @@ Elixir Neurales Netzwerk
 
 
   <section id="moduledoc">
-<p>Hauptmodul des Neuralen Netzwerks.</p><p>Elixir ist eine funktionelle Sprache,
-und so habe ich mich entschieden in diesem Projekt eine funktionelle Herangehensweise zu benutzen.
-Wie im <code class="inline">train.ex</code>-Modul einsehbar, sind alle Werte unveränderbar und werden einzeln in jede Funktion eingespeist.</p>
+<p>Hauptmodul für die Kernlogik des neuralen Netzwerkes.</p>
   </section>
 
 
@@ -126,7 +124,115 @@ Wie im <code class="inline">train.ex</code>-Modul einsehbar, sind alle Werte unv
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#main/0" translate="no">main()</a>
+        <a href="#build/1" translate="no">build(input_shape)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Erstellt ein neurales Netz.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#display_data/1" translate="no">display_data(arg)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#display_image/1" translate="no">display_image(image)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#display_network/1" translate="no">display_network(model)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#download/0" translate="no">download()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Importiert den MNIST-Datensatz</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#load!/1" translate="no">load!(path)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Lädt das Netzwerk und dessen Zusaznd aus der angegebenen Datei.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#predict/2" translate="no">predict(arg, data)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Stellt das Netzwerk als Tebelle dar.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#prediction_images/1" translate="no">prediction_images(arg)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#save!/2" translate="no">save!(data, path)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Speichert das Netzwerk und dessen Zusaznd in der angegebenen Datei.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#test/4" translate="no">test(model, model_state, test_images, test_labels)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#train/4" translate="no">train(model, train_images, train_labels, epochs)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Trainiert das neurale Netz.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#transform_images/2" translate="no">transform_images(arg, split)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#transform_labels/2" translate="no">transform_labels(arg, split)</a>
 
       </div>
 
@@ -146,14 +252,227 @@ Wie im <code class="inline">train.ex</code>-Modul einsehbar, sind alle Werte unv
 Functions
     </h1>
     <div class="functions-list">
-<section class="detail" id="main/0">
+<section class="detail" id="build/1">
 
   <div class="detail-header">
-    <a href="#main/0" class="detail-link" title="Link to this function">
+    <a href="#build/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">main()</h1>
+    <h1 class="signature" translate="no">build(input_shape)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Erstellt ein neurales Netz.</p><p>Das Netz hat 28x28 Input-Neuronen, 128 &quot;versteckte&quot; Neuronen und 10 Ergebnis-Neuronen.
+Als Aktivierungs-Funktion wird hier für beide Ebenen die Logistische Funktion $\sigma(x)$ verwendet.</p>
+  </section>
+</section>
+<section class="detail" id="display_data/1">
+
+  <div class="detail-header">
+    <a href="#display_data/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">display_data(arg)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="display_image/1">
+
+  <div class="detail-header">
+    <a href="#display_image/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">display_image(image)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="display_network/1">
+
+  <div class="detail-header">
+    <a href="#display_network/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">display_network(model)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="download/0">
+
+  <div class="detail-header">
+    <a href="#download/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">download()</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Importiert den MNIST-Datensatz</p><p>Der MNIST-Datensatz besteht aus 60.000 28x28 Pixel großen Bildern von handgeschriebenen Zahlen.
+(<a href="https://en.wikipedia.org/wiki/MNIST_database">https://en.wikipedia.org/wiki/MNIST_database</a>)</p><p>Die Daten werden in einem &quot;Tuple&quot;, ein Container für eine bestimmte Anzahl von Elementen, gespeichert.</p><h2 id="download/0-format" class="section-heading">
+  <a href="#download/0-format" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">format</p>
+  </a>
+  Format
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">download</span><span class="p" data-group-id="0200669618-1">(</span><span class="p" data-group-id="0200669618-1">)</span><span class="w">
+</span><span class="p" data-group-id="0200669618-2">{</span><span class="n">images</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p" data-group-id="0200669618-2">}</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="load!/1">
+
+  <div class="detail-header">
+    <a href="#load!/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">load!(path)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Lädt das Netzwerk und dessen Zusaznd aus der angegebenen Datei.</p>
+  </section>
+</section>
+<section class="detail" id="predict/2">
+
+  <div class="detail-header">
+    <a href="#predict/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">predict(arg, data)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Stellt das Netzwerk als Tebelle dar.</p>
+  </section>
+</section>
+<section class="detail" id="prediction_images/1">
+
+  <div class="detail-header">
+    <a href="#prediction_images/1" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">prediction_images(arg)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="save!/2">
+
+  <div class="detail-header">
+    <a href="#save!/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">save!(data, path)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Speichert das Netzwerk und dessen Zusaznd in der angegebenen Datei.</p>
+  </section>
+</section>
+<section class="detail" id="test/4">
+
+  <div class="detail-header">
+    <a href="#test/4" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">test(model, model_state, test_images, test_labels)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="train/4">
+
+  <div class="detail-header">
+    <a href="#train/4" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">train(model, train_images, train_labels, epochs)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Trainiert das neurale Netz.</p><p>Hierzu wird es über mehrere Generationen &quot;Epochen&quot; mit dem Trainingsdatensatz trainiert.</p>
+  </section>
+</section>
+<section class="detail" id="transform_images/2">
+
+  <div class="detail-header">
+    <a href="#transform_images/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">transform_images(arg, split)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="transform_labels/2">
+
+  <div class="detail-header">
+    <a href="#transform_labels/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">transform_labels(arg, split)</h1>
 
 
   </div>

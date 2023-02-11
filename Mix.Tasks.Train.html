@@ -13,7 +13,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-IV5W3OL2.js"></script>
-    <script src="dist/sidebar_items-4D2164D4.js"></script>
+    <script src="dist/sidebar_items-9C132F10.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -104,6 +104,10 @@ Elixir Neurales Netzwerk
 </h1>
 
 
+  <section id="moduledoc">
+<p>Trainiert das neurale Netz mit dem MNIST-Datensatz.</p>
+  </section>
+
 
   <section id="summary" class="details-list">
     <h1 class="section-heading">
@@ -124,7 +128,7 @@ Elixir Neurales Netzwerk
 
       </div>
 
-        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/mix/Mix.Task.html#c:run/1"><code class="inline">Mix.Task.run/1</code></a>.</p></div>
+        <div class="summary-synopsis"><p>Formatiert den MNIST-Datensatz und traniert das neurale Netz.</p></div>
 
     </div>
 
@@ -156,7 +160,9 @@ Functions
 
   <section class="docstring">
 
-<p>Callback implementation for <a href="https://hexdocs.pm/mix/Mix.Task.html#c:run/1"><code class="inline">Mix.Task.run/1</code></a>.</p>
+<p>Formatiert den MNIST-Datensatz und traniert das neurale Netz.</p><p>Separiert den Datensatz in Trainings- und Testdaten.
+Diese werden dann in die Trainings- und Testfunktion des neuralen Netzes eingespeist.
+Im Anschluss wird das Modell und der Tranierte Zusatnd in der Datei &quot;model.axon&quot; gespeichert.</p>
   </section>
 </section>
 
