@@ -97,7 +97,7 @@ defmodule ElixirNeuralNetwork do
   """
   def train(model, train_images, train_labels, epochs) do
     model
-    |> Axon.Loop.trainer(:mean_absolute_error, :sgd)
+    |> Axon.Loop.trainer(:categorical_cross_entropy, Axon.Optimizers.sgd(0.05))
     |> Axon.Loop.metric(:accuracy, "Accuracy")
     |> Axon.Loop.run(Stream.zip(train_images, train_labels), %{}, epochs: epochs)
   end
