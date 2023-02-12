@@ -85,6 +85,7 @@ defmodule ElixirNeuralNetwork do
   def build(input_shape) do
     Axon.input("input", shape: input_shape)
     |> Axon.dense(128, name: "hidden_1", activation: :relu)
+    |> Axon.dropout(name: "dropout", rate: 0.5)
     |> Axon.dense(10, name: "output", activation: :sigmoid)
   end
 
@@ -113,8 +114,7 @@ defmodule ElixirNeuralNetwork do
   def predict({model, state}, data) do
     model
     |> Axon.predict(state, data)
-    |> Nx.argmax(axis: 1)
-    |> IO.inspect()
+    |> Nx.argmax()
   end
 
   @doc """
