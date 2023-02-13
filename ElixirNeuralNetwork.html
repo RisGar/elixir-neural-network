@@ -13,7 +13,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-IV5W3OL2.js"></script>
-    <script src="dist/sidebar_items-96354AAA.js"></script>
+    <script src="dist/sidebar_items-979071AB.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -124,7 +124,27 @@ Elixir Neurales Netzwerk
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#build/1" translate="no">build(input_shape)</a>
+        <a href="#batch_images/2" translate="no">batch_images(arg, split)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Wandelt die Bilder des Datensatz in für das Netz verarbeitbare &quot;Batches&quot; von Matrizen um.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#batch_labels/2" translate="no">batch_labels(arg, split)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Wandelt die gewünschten Ergebinisse des Datensatz in für das Netz verarbeitbare &quot;Batches&quot; von Matrizen um.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#build/0" translate="no">build()</a>
 
       </div>
 
@@ -184,7 +204,7 @@ Elixir Neurales Netzwerk
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#predict/2" translate="no">predict(arg, data)</a>
+        <a href="#predict/3" translate="no">predict(model, state, data)</a>
 
       </div>
 
@@ -194,7 +214,7 @@ Elixir Neurales Netzwerk
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#prediction_images/1" translate="no">prediction_images(arg)</a>
+        <a href="#prepare_images/1" translate="no">prepare_images(arg)</a>
 
       </div>
 
@@ -232,26 +252,6 @@ Elixir Neurales Netzwerk
 
     </div>
 
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#transform_images/2" translate="no">transform_images(arg, split)</a>
-
-      </div>
-
-        <div class="summary-synopsis"><p>Wandelt die Bilder des Datensatz in für das Netz verarbeitbare &quot;Batches&quot; von Matrizen um.</p></div>
-
-    </div>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#transform_labels/2" translate="no">transform_labels(arg, split)</a>
-
-      </div>
-
-        <div class="summary-synopsis"><p>Wandelt die gewünschten Ergebinisse des Datensatz in für das Netz verarbeitbare &quot;Batches&quot; von Matrizen um.</p></div>
-
-    </div>
-
 </div>
 
   </section>
@@ -266,14 +266,48 @@ Elixir Neurales Netzwerk
 Functions
     </h1>
     <div class="functions-list">
-<section class="detail" id="build/1">
+<section class="detail" id="batch_images/2">
 
   <div class="detail-header">
-    <a href="#build/1" class="detail-link" title="Link to this function">
+    <a href="#batch_images/2" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">build(input_shape)</h1>
+    <h1 class="signature" translate="no">batch_images(arg, split)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Wandelt die Bilder des Datensatz in für das Netz verarbeitbare &quot;Batches&quot; von Matrizen um.</p>
+  </section>
+</section>
+<section class="detail" id="batch_labels/2">
+
+  <div class="detail-header">
+    <a href="#batch_labels/2" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">batch_labels(arg, split)</h1>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Wandelt die gewünschten Ergebinisse des Datensatz in für das Netz verarbeitbare &quot;Batches&quot; von Matrizen um.</p>
+  </section>
+</section>
+<section class="detail" id="build/0">
+
+  <div class="detail-header">
+    <a href="#build/0" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">build()</h1>
 
 
   </div>
@@ -356,8 +390,8 @@ Als Aktivierungs-Funktion wird hier für beide Ebenen die Logistische Funktion $
   </a>
   Format
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">download</span><span class="p" data-group-id="9321087899-1">(</span><span class="p" data-group-id="9321087899-1">)</span><span class="w">
-</span><span class="p" data-group-id="9321087899-2">{</span><span class="n">images</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p" data-group-id="9321087899-2">}</span></code></pre>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">download</span><span class="p" data-group-id="0953087865-1">(</span><span class="p" data-group-id="0953087865-1">)</span><span class="w">
+</span><span class="p" data-group-id="0953087865-2">{</span><span class="n">images</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="p" data-group-id="0953087865-2">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="load_state!/1">
@@ -377,14 +411,14 @@ Als Aktivierungs-Funktion wird hier für beide Ebenen die Logistische Funktion $
 <p>Lädt das Netzwerk und dessen Zustand aus der angegebenen Datei.</p>
   </section>
 </section>
-<section class="detail" id="predict/2">
+<section class="detail" id="predict/3">
 
   <div class="detail-header">
-    <a href="#predict/2" class="detail-link" title="Link to this function">
+    <a href="#predict/3" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">predict(arg, data)</h1>
+    <h1 class="signature" translate="no">predict(model, state, data)</h1>
 
 
   </div>
@@ -394,14 +428,14 @@ Als Aktivierungs-Funktion wird hier für beide Ebenen die Logistische Funktion $
 <p>Führt dem Netzwerk ein Bild ein, um die Ziffer zu erhalelten, welche das Netzwerk als höchste Warscheinlichkeit sieht.</p>
   </section>
 </section>
-<section class="detail" id="prediction_images/1">
+<section class="detail" id="prepare_images/1">
 
   <div class="detail-header">
-    <a href="#prediction_images/1" class="detail-link" title="Link to this function">
+    <a href="#prepare_images/1" class="detail-link" title="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature" translate="no">prediction_images(arg)</h1>
+    <h1 class="signature" translate="no">prepare_images(arg)</h1>
 
 
   </div>
@@ -460,40 +494,6 @@ Als Aktivierungs-Funktion wird hier für beide Ebenen die Logistische Funktion $
   <section class="docstring">
 
 <p>Trainiert das neurale Netz.</p><p>Hierzu wird es über mehrere Generationen &quot;Epochen&quot; mit dem Trainingsdatensatz trainiert.</p>
-  </section>
-</section>
-<section class="detail" id="transform_images/2">
-
-  <div class="detail-header">
-    <a href="#transform_images/2" class="detail-link" title="Link to this function">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature" translate="no">transform_images(arg, split)</h1>
-
-
-  </div>
-
-  <section class="docstring">
-
-<p>Wandelt die Bilder des Datensatz in für das Netz verarbeitbare &quot;Batches&quot; von Matrizen um.</p>
-  </section>
-</section>
-<section class="detail" id="transform_labels/2">
-
-  <div class="detail-header">
-    <a href="#transform_labels/2" class="detail-link" title="Link to this function">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature" translate="no">transform_labels(arg, split)</h1>
-
-
-  </div>
-
-  <section class="docstring">
-
-<p>Wandelt die gewünschten Ergebinisse des Datensatz in für das Netz verarbeitbare &quot;Batches&quot; von Matrizen um.</p>
   </section>
 </section>
 
