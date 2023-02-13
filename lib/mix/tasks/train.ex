@@ -13,8 +13,10 @@ defmodule Mix.Tasks.Train do
   Formatiert den MNIST-Datensatz und traniert das neurale Netz.
 
   Separiert den Datensatz in Trainings- und Testdaten.
+  Die Daten werden in einer Matrix gespeichert, um dann mit einer Kostenfunktion trainiert zu werden,
+  nachdem sie in das neurale Netz eingespeist werden. 
   Diese werden dann in die Trainings- und Testfunktion des neuralen Netzes eingespeist.
-  Im Anschluss wird das Modell und der Tranierte Zusatnd in der Datei "model.axon" gespeichert.
+  Im Anschluss wird der trainierte Zustand in der Datei "state.axon" gespeichert.
   """
   @impl Mix.Task
   def run(_) do
