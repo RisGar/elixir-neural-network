@@ -25,6 +25,9 @@ defmodule ElixirNeuralNetwork do
     Enum.split(data, n)
   end
 
+  @doc """
+  Wandelt die Bilder des Datensatz in für das Netz verarbeitbare Bilder zum erkennen einer Zahl um.
+  """
   def prediction_images({binary, type, shape}) do
     binary
     |> Nx.from_binary(type)
@@ -32,6 +35,9 @@ defmodule ElixirNeuralNetwork do
     |> Nx.divide(255)
   end
 
+  @doc """
+  Wandelt die Bilder des Datensatz in für das Netz verarbeitbare "Batches" von Matrizen um.
+  """
   def transform_images({binary, type, shape}, split) do
     binary
     |> Nx.from_binary(type)
@@ -41,6 +47,9 @@ defmodule ElixirNeuralNetwork do
     |> training_split(split)
   end
 
+  @doc """
+  Wandelt die gewünschten Ergebinisse des Datensatz in für das Netz verarbeitbare "Batches" von Matrizen um.
+  """
   def transform_labels({binary, type, _}, split) do
     binary
     |> Nx.from_binary(type)
@@ -52,6 +61,9 @@ defmodule ElixirNeuralNetwork do
     |> training_split(split)
   end
 
+  @doc """
+  Stellt die Anzahl der Trainings- und Testdaten dar.
+  """
   def display_data({training_data, testing_data}) do
     IO.puts("Training Images: #{training_data |> Enum.count()}")
     IO.puts("Testing Images: #{testing_data |> Enum.count()}")
@@ -101,6 +113,11 @@ defmodule ElixirNeuralNetwork do
     |> Axon.Loop.run(Stream.zip(train_images, train_labels), %{}, epochs: epochs, compiler: EXLA)
   end
 
+  @doc """
+  Testet das neurale Netz.
+
+  Hierzu werden über eine Generation die Testdaten in das Netz eingeführt und die Genauigkeit des Netzes erfasst.
+  """
   def test(model, model_state, test_images, test_labels) do
     model
     |> Axon.Loop.evaluator()
