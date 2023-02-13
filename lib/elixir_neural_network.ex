@@ -84,7 +84,7 @@ defmodule ElixirNeuralNetwork do
   """
   def build(input_shape) do
     Axon.input("input", shape: input_shape)
-    |> Axon.dense(128, name: "hidden_1", activation: :relu)
+    |> Axon.dense(128, name: "hidden", activation: :relu)
     |> Axon.dropout(name: "dropout", rate: 0.5)
     |> Axon.dense(10, name: "output", activation: :sigmoid)
   end
