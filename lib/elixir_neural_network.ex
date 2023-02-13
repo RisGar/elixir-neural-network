@@ -28,7 +28,7 @@ defmodule ElixirNeuralNetwork do
   @doc """
   Wandelt die Bilder des Datensatz in für das Netz verarbeitbare Bilder zum erkennen einer Zahl um.
   """
-  def prediction_images({binary, type, shape}) do
+  def prepare_images({binary, type, shape}) do
     binary
     |> Nx.from_binary(type)
     |> Nx.reshape({elem(shape, 0), 784})
@@ -38,7 +38,7 @@ defmodule ElixirNeuralNetwork do
   @doc """
   Wandelt die Bilder des Datensatz in für das Netz verarbeitbare "Batches" von Matrizen um.
   """
-  def transform_images({binary, type, shape}, split) do
+  def batch_images({binary, type, shape}, split) do
     binary
     |> Nx.from_binary(type)
     |> Nx.reshape({elem(shape, 0), 784})
@@ -50,7 +50,7 @@ defmodule ElixirNeuralNetwork do
   @doc """
   Wandelt die gewünschten Ergebinisse des Datensatz in für das Netz verarbeitbare "Batches" von Matrizen um.
   """
-  def transform_labels({binary, type, _}, split) do
+  def batch_labels({binary, type, _}, split) do
     binary
     |> Nx.from_binary(type)
     # vectorise result (convert from [0, 1, 2, 3, ...] to [[1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0], ...])
@@ -94,8 +94,8 @@ defmodule ElixirNeuralNetwork do
   Das Netz hat 28x28 Input-Neuronen, 128 "versteckte" Neuronen und 10 Ergebnis-Neuronen.
   Als Aktivierungs-Funktion wird hier für beide Ebenen die Logistische Funktion $\sigma(x)$ verwendet.
   """
-  def build(input_shape) do
-    Axon.input("input", shape: input_shape)
+  def build() do
+    Axon.input("input", shape: {nil, 784})
     |> Axon.dense(128, name: "hidden", activation: :relu)
     |> Axon.dropout(name: "dropout", rate: 0.5)
     |> Axon.dense(10, name: "output", activation: :sigmoid)
@@ -128,7 +128,7 @@ defmodule ElixirNeuralNetwork do
   @doc """
   Führt dem Netzwerk ein Bild ein, um die Ziffer zu erhalelten, welche das Netzwerk als höchste Warscheinlichkeit sieht.
   """
-  def predict({model, state}, data) do
+  def predict(model, state, data) do
     model
     |> Axon.predict(state, data)
     |> Nx.argmax()

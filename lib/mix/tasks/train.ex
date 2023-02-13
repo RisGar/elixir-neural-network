@@ -25,13 +25,13 @@ defmodule Mix.Tasks.Train do
 
     {images, labels} = download()
 
-    {train_images, test_images} = transform_images(images, split)
-    {train_labels, test_labels} = transform_labels(labels, split)
+    {train_images, test_images} = batch_images(images, split)
+    {train_labels, test_labels} = batch_labels(labels, split)
 
     {train_images, test_images}
     |> display_data()
 
-    model = build({nil, 784})
+    model = build()
 
     model
     |> display_network()

@@ -1,6 +1,6 @@
 defmodule Mix.Tasks.Predict do
   @moduledoc """
-  Speist einen zufälligen 
+  Speist ein zufälliges Bild aus dem Datensatz in das neurale Netz ein.
   """
 
   use Mix.Task
@@ -18,18 +18,18 @@ defmodule Mix.Tasks.Predict do
   def run(_) do
     {raw_images, _} = download()
 
-    images = prediction_images(raw_images)
+    images = prepare_images(raw_images)
 
-    model = build({nil, 784})
+    model = build()
     state = load_state!("cache/state.axon")
 
     sample =
       images
-      |> Nx.slice_along_axis(:rand.uniform(60000), 1)
+      |> Nx.slice_along_axis(:rand.uniform(Nx.shape(images) |> elem(0)), 1)
 
     display_image(sample)
 
-    prediction = predict({model, state}, sample)
+    prediction = predict(model, state, sample)
 
     IO.puts("Prediction: #{Nx.to_number(prediction)}")
 
